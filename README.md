@@ -1,30 +1,48 @@
-# Database config
+# Installation
+
+## app/Config/bootstap.php
+
+```php
+<?php
+CakePlugin::load('Rest');
+?>
+```
+
+## Database config
 
 ````php
 <?php
 class DATABASE_CONFIG {
-        public $default = array(
-                'datasource'    => 'Mongodb.MongodbSource',
-                'host'                  => 'mongo',
-                'database'              => 'phpgraph',
-                'port'                  => 27017,
-                'prefix'                => '',
-                'persistent'    => true,
-        );
 
-        public $platform = array(
-                'datasource'    => 'Rest.RestSource',
-                'host'                  => 'https://platform-cw.officecloud.dk',
+        public $sample = array(
+                'datasource'            => 'Rest.RestSource',
+                'host'                  => 'http://api.example.com',
                 'format'                => 'json',
                 'encoding'              => 'utf-8',
         );
 
-        public $graph = array(
-                'datasource'    => 'Rest.RestSource',
-                'host'                  => 'https://graph.officecloud.dk',
-                'format'                => 'json',
-                'encoding'              => 'utf-8',
-        );
 }
 ?>
 ````
+
+# Examlpes
+
+## Cake inflection REST endpoint
+
+````php
+<?php
+class User extends AppModel {
+
+        public $useDbConfig = 'platform';
+
+        public $remoteResource = 'users';
+
+}
+?>
+````
+
+User::find('all')               == GET    http://api.example.com/users.json
+User::read(null, $id)           == GET    http://api.example.com/users/$id.json
+User::save()                    == POST   http://api.example.com/users.json
+User::save(array('id' => $id))  == PUT    http://api.example.com/users/$id.json
+User::delete($id)               == DELETE http://api.example.com/users/$id.json
