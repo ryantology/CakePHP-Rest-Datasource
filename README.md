@@ -33,7 +33,7 @@ class DATABASE_CONFIG {
 <?php
 class User extends AppModel {
 
-        public $useDbConfig = 'platform';
+        public $useDbConfig = 'sample';
 
         public $remoteResource = 'users';
 
