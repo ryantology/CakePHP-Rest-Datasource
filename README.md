@@ -10,7 +10,7 @@ CakePlugin::load('Rest');
 
 ## Database config
 
-````php
+```php
 <?php
 class DATABASE_CONFIG {
 
@@ -23,13 +23,13 @@ class DATABASE_CONFIG {
 
 }
 ?>
-````
+```
 
 # Examlpes
 
 ## Cake inflection REST endpoint
 
-````php
+```php
 <?php
 class User extends AppModel {
 
@@ -39,10 +39,14 @@ class User extends AppModel {
 
 }
 ?>
-````
+```
 
+```
 User::find('all')               == GET    http://api.example.com/users.json
 User::read(null, $id)           == GET    http://api.example.com/users/$id.json
 User::save()                    == POST   http://api.example.com/users.json
 User::save(array('id' => $id))  == PUT    http://api.example.com/users/$id.json
 User::delete($id)               == DELETE http://api.example.com/users/$id.json
+```
+
+More to come later
